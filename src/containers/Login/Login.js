@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import { authenticate } from "../actions/authActions";
+import { authenticate } from "../../actions/authActions";
+
+import LoginForm from '../../components/LoginForm/LoginForm';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+
+import './Login.css';
 
 class Login extends Component {
 
@@ -18,10 +23,13 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <header className="Dashboard-header">
-          <h1 className="Dashboard-title" onClick={this.onSubmitLogin}>Welcome to Login</h1>
-        </header>
+      <div id="login">
+
+        <div className="section-content">
+          <LoginForm onSubmitLogin={this.onSubmitLogin}/>
+          <RegistrationForm />
+        </div>
+
       </div>
     );
   }

@@ -1,0 +1,104 @@
+#menu-header{
+  background: #0095e5;
+  border-bottom: 1px solid var(--alt-light-color);
+  padding: 20px 40px;
+  text-align: center;
+  color: white;
+}
+
+#menu-header .user-name span.fa{
+  line-height: 21px;
+  margin: 0 10px;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+#menu-header .require-auth > button{
+  font-size: 13px;
+  margin-right: 5px;
+  padding: 5px;;
+  background: transparent;
+  border: 1px solid var(--alt-color);
+  color: var(--main-inv-color);
+}
+
+#menu-header .require-auth > button:hover{
+  color: var(--main-color);
+  background: var(--main-inv-color);
+  cursor: pointer;
+}
+
+#menu-header .require-auth > button .fa{
+  margin-right: 5px;
+}
+
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #e3e3e3;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+  display: none;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0;
+}
+
+.bm-item-list a{
+  padding: 20px;
+  background:#0095e5;
+  text-align: center ;
+  text-transform: uppercase ;
+  text-decoration: none ;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.bm-item-list a:hover{
+  background: white;
+  color: #0095e5;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.bm-menu-wrap  div.bm-menu{
+  overflow: hidden !important;
+  padding: 0;
+}

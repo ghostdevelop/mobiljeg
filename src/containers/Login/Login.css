@@ -1,0 +1,9 @@
+div#login .section-content{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+div#login .section-content > div{
+  flex: 1;
+}

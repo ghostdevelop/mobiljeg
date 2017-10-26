@@ -1,0 +1,9 @@
+#buy-tickets .buy-tickets{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#buy-tickets .buy-tickets > div{
+  flex: 1;
+}

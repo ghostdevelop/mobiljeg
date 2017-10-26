@@ -1,14 +1,13 @@
 import axios from "axios";
 
-export function authenticate(data){
+export function buyTicket(data){
   return function(dispatch){
-    console.log(data)
     axios.get("http://rest.learncode.academy/api/test123/tweets")
       .then((response) => {
-        dispatch({type: "AUTH_SUCCESS", payload: response.data})
+        dispatch({type: "BUY_TICKET_FULFILLED", payload: data})
       })
       .catch((err) => {
-        dispatch({type: "AUTH_FAIL", payload: err})
+        dispatch({type: "BUY_TICKET_REJECTED", payload: err})
       })
     }
   }

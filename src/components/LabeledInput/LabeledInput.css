@@ -1,0 +1,94 @@
+label.labeled-input{
+  position: relative;
+  display: block;
+}
+
+label.labeled-input input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 15px;
+  background: transparent;
+  border: 1px solid var(--alt-dark-color);
+  color: var(--main-color);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+label.labeled-input input.invertColor{
+  color: var(--alt-color);
+}
+
+label.labeled-input input::-webkit-input-placeholder {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: var(--alt-dark-color);
+}
+
+label.labeled-input input::-moz-placeholder {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: var(--alt-dark-color);
+}
+
+label.labeled-input input:-ms-input-placeholder {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: var(--alt-dark-color);
+}
+
+label.labeled-input input::placeholder {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: var(--alt-dark-color);
+}
+
+label.labeled-input input:focus,
+label.labeled-input.populated input {
+  padding-top: 28px;
+  padding-bottom: 12px;
+}
+
+label.labeled-input input:focus::-webkit-input-placeholder,
+label.labeled-input.populated input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+label.labeled-input input:focus::-moz-placeholder,
+label.labeled-input.populated input::-moz-placeholder {
+  color: transparent;
+}
+
+label.labeled-input input:focus:-ms-input-placeholder,
+label.labeled-input.populated input:-ms-input-placeholder {
+  color: transparent;
+}
+
+label.labeled-input input:focus::placeholder,
+label.labeled-input.populated input::placeholder {
+  color: transparent;
+}
+
+label.labeled-input input:focus + span,
+label.labeled-input.populated input + span {
+  opacity: 1;
+  top: 10px;
+  left: 15px;
+}
+
+label.labeled-input input + span {
+  font-weight: bold;
+  color: var(--main-color);
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+label.labeled-input input.invertColor + span {
+  color: var(--alt-dark-color);
+}

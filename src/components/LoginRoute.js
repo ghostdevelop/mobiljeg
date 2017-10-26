@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Login from "../containers/login";
+import Login from "../containers/Login/Login";
 
 class LoginRoute extends Component {
 
@@ -14,7 +14,7 @@ class LoginRoute extends Component {
             state: { from: "/login"}
           }} />
         :
-          <Route path="/login" component={Login} />
+          <Route exact path="/login" component={Login} />
   }
 
 }
