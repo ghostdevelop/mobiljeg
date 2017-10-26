@@ -16,6 +16,14 @@ label.labeled-input input {
   transition: all 0.2s ease-in-out;
 }
 
+label.labeled-input input.valid{
+  border-color: var(--valid-color);
+}
+
+label.labeled-input input.invalid{
+  border-color: var(--invalid-color);
+}
+
 label.labeled-input input.invertColor{
   color: var(--alt-color);
 }

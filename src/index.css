@@ -23,6 +23,8 @@ body {
   --text-color: #333;
   --link-color: #0095e5;
   --link-hover-color: #666;
+  --valid-color: rgb(0, 208, 0);
+  --invalid-color: rgb(208, 87, 95)
 }
 
 /*********** INPUTS *************/
