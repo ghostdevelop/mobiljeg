@@ -57,6 +57,10 @@ input{
   cursor: pointer;
 }
 
+.btn:hover:disabled{
+  cursor: not-allowed;
+}
+
 .btn.btn-inv{
   border: 1px solid var(--main-inv-color);
   background: var(--main-inv-color);

@@ -17,7 +17,7 @@ export default class LabeledInput extends Component {
     let cssClass = "";
 
     if (props.value !== "" && props.value !== undefined)
-      cssClass = "populated ";
+      cssClass += "populated ";
 
     if (props.invertColor === true)
       cssClass += "invertColor ";
@@ -26,11 +26,11 @@ export default class LabeledInput extends Component {
       cssClass += "valid ";
     }
 
-    if (this.state.focused === true && this.props.error[props.name]){
+    if (this.props.error[props.name]){
       cssClass += "invalid ";
     }
 
-      return cssClass;
+    return cssClass;
   }
 
   onChange(e){
@@ -40,10 +40,10 @@ export default class LabeledInput extends Component {
 
   render() {
     return(
-      <div>
-        <label className="labeled-input">
+      <div className="labeled-input">
+        <label className={this.setClass(this.props)}>
           <input
-            className={this.setClass(this.props)}
+            className={this.props.className}
             type={this.props.type ? this.props.type : "text"}
             value={this.props.value ? this.props.value : ""}
             name={this.props.name}
@@ -61,7 +61,7 @@ export default class LabeledInput extends Component {
           ?
             <span className="error">{this.props.error[this.props.name]}</span>
           :
-            <span className="error"></span>
+            <span></span>
         }
       </div>
     );
