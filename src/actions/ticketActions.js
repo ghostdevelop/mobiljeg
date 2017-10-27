@@ -47,14 +47,30 @@ export function submit(validation){
       dispatch({type: "SUBMISSION_STARTED"})
       axios.post("http://localhost:7235/data/ticket/new-ticket", getState().ticket.inputs)
         .then((response) => {
-          console.log("response", response)
-          dispatch({type: "SUBMISSION_SUCCESS", payload: response})
+          dispatch({type: "SUBMISSION_SUCCESS", payload: response.data})
         })
         .catch((err) => {
-          console.log("err", err)
           dispatch({type: "SUBMISSION_FAILED", payload: err})
       })
     }
+  }
+}
 
+export function renewSession(e){
+  return function(dispatch, getState){
+      dispatch({type: "RENEW_SESSION"})
+  }
+}
+
+export function getTickets(e){
+  return function(dispatch, getState){
+      dispatch({type: "FETCHING_TICKETS_STARTED"})
+      axios.get("http://localhost:7235/data/ticket/")
+        .then((response) => {
+          dispatch({type: "FETCHING_TICKETS_SUCCESS", payload: response.data})
+        })
+        .catch((err) => {
+          // dispatch({type: "SUBMISSION_FAILED", payload: err})
+      })
   }
 }

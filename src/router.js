@@ -10,6 +10,7 @@ import Header from "./containers/Header/Header";
 import Footer from "./containers/Footer/Footer";
 import Home from "./containers/Home/Home";
 import BuyTicket from "./containers/BuyTicket/BuyTicket";
+import TicketList from "./containers/TicketList/TicketList";
 
 class Router extends Component {
   render() {
@@ -21,6 +22,7 @@ class Router extends Component {
             <Switch>
               <Route exact path="/" render={(props) => (<Home {...props}/>)}/>
               <Route exact path="/jegyvasarlas" render={(props) => (<BuyTicket {...props}/>)}/>
+              <Route exact path="/jegyek" render={(props) => (<TicketList {...props}/>)}/>
               <Redirect to="/" />
             </Switch>
             <Route render={(props) => (<Footer {...props}/>)}/>

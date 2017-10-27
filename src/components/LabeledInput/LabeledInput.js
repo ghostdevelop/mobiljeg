@@ -26,7 +26,7 @@ export default class LabeledInput extends Component {
       cssClass += "valid ";
     }
 
-    if (this.props.error[props.name]){
+    if (this.props.error && this.props.error[props.name]){
       cssClass += "invalid ";
     }
 
@@ -57,7 +57,7 @@ export default class LabeledInput extends Component {
           />
           <span>{this.props.placeholder}</span>
         </label>
-        {this.props.error[this.props.name]
+        {this.props.error && this.props.error[this.props.name]
           ?
             <span className="error">{this.props.error[this.props.name]}</span>
           :

@@ -32,4 +32,5 @@
 #buy-ticket-form .buy-ticket-summary span.amount{
   text-align: right;
   font-weight: bold;
+  font-size: 48px;
 }

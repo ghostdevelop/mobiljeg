@@ -5,13 +5,14 @@ const initialState = {
     name: "",
     email: "",
     phone: "",
-    qty: 1,
-    summary: 700
+    qty: 0,
+    summary: 0
 
   },
   validated: false,
   loading: false,
   success: false,
+  failed: false,
   error: []
 };
 
@@ -44,12 +45,23 @@ export default function reducer(state = initialState, action) {
       });
     }
 
-    case "BUY_TICKET_FULFILLED": {
-      return {ticket: {...action.payload}, succes: true}
+    case "SUBMISSION_SUCCESS": {
+      return update(state, {
+        loading: {$set: false},
+        success: {$set: true},
+        inputs: {$set: action.payload}
+      });
     }
 
-    case "BUY_TICKET_REJECTED": {
-      return {ticket: {...action.payload}}
+    case "SUBMISSION_FAILED": {
+      return update(state, {
+        loading: {$set: false},
+        failed: {$set: true}
+      });
+    }
+
+    case "RENEW_SESSION": {
+      return initialState;
     }
 
     default: {
