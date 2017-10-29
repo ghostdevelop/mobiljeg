@@ -25,7 +25,7 @@ export function register(data, success = false, failed = false){
       })
       .catch((err) => {
         if (failed !== false)
-          dispatch({type: failed, payload: err.response.data})
+          dispatch({type: failed, payload: err.response})
 
         dispatch({type: "REGISTRATION_FAILED", payload: err.response.data})
     })

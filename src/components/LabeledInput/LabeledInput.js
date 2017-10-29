@@ -22,7 +22,7 @@ export default class LabeledInput extends Component {
     if (props.invertColor === true)
       cssClass += "invertColor ";
 
-    if (this.state.focused === true && !this.props.error[props.name]){
+    if (this.state.focused === true && this.props.error && !this.props.error[props.name]){
       cssClass += "valid ";
     }
 
