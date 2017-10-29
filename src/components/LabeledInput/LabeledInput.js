@@ -50,10 +50,9 @@ export default class LabeledInput extends Component {
             placeholder={this.props.placeholder}
             onChange={this.onChange}
             disabled={this.props.disabled}
-            required={this.props.required}
-            locale={this.props.locale}
             min={this.props.min}
             max={this.props.max}
+            pattern={this.props.pattern}
           />
           <span>{this.props.placeholder}</span>
         </label>

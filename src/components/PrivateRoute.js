@@ -7,7 +7,7 @@ class PrivateRoute extends Component {
   render() {
       return this.props.isAuthenticated
         ?
-          <Route exact path={this.props.path} component={this.props.component} />
+          <Route exact path={this.props.path} render={this.props.render} />
         :
           <Redirect to={{ pathname: "/login", state: { from: this.props.path} }} />
   }
@@ -15,5 +15,5 @@ class PrivateRoute extends Component {
 }
 
 export default connect(state => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  isAuthenticated: state.user.isAuthenticated,
 }))(PrivateRoute);

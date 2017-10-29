@@ -5,15 +5,16 @@ class Profil extends Component {
 
   render() {
     return (
-      <div id="profil">
-
-        <div className="section">
-          <div className="section-content">
-            <h1 className="block-title">Profilom</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ac arcu quis ex condimentum pretium. Etiam facilisis id quam tincidunt finibus. Duis gravida maximus quam eu suscipit. Vivamus mauris dui, molestie et commodo eu, dapibus vitae urna. Morbi sed augue ut arcu dignissim cursus sed ac sapien. </p>
+      <div id="profil" className="section">
+        <div id="">
+          <div className="container">
+            <div className="row block-title-holder">
+              <div className="col-md-12">
+                <h1 className="block-title">Profil</h1>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     );
   }

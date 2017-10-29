@@ -1,11 +1,13 @@
 import update from 'immutability-helper';
 
+const actionPrefix = "BUY_TICKET_FORM_";
+
 const initialState = {
   inputs: {
     name: "",
     email: "",
     phone: "",
-    qty: 0,
+    qty: "0",
     summary: 0
 
   },
@@ -19,33 +21,33 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
 
-    case "INPUT_CHANGE": {
+    case actionPrefix + "INPUT_CHANGE": {
       return update(state, {
         inputs: {[action.payload.name]: {$set: action.payload.value}}
       });
     }
 
-    case "VALIDATION_PASSED": {
+    case actionPrefix + "VALIDATION_PASSED": {
       return update(state, {
         validated: {$set: true},
         error: {$set: action.payload.error}
       });
     }
 
-    case "VALIDATION_FAILED": {
+    case actionPrefix + "VALIDATION_FAILED": {
       return update(state, {
         validated: {$set: false},
         error: {$set: action.payload.error}
       });
     }
 
-    case "SUBMISSION_STARTED": {
+    case actionPrefix + "SUBMISSION_STARTED": {
       return update(state, {
         loading: {$set: true}
       });
     }
 
-    case "SUBMISSION_SUCCESS": {
+    case actionPrefix + "SUBMISSION_SUCCESS": {
       return update(state, {
         loading: {$set: false},
         success: {$set: true},
@@ -53,14 +55,14 @@ export default function reducer(state = initialState, action) {
       });
     }
 
-    case "SUBMISSION_FAILED": {
+    case actionPrefix + "SUBMISSION_FAILED": {
       return update(state, {
         loading: {$set: false},
         failed: {$set: true}
       });
     }
 
-    case "RENEW_SESSION": {
+    case actionPrefix + "RENEW_SESSION": {
       return initialState;
     }
 

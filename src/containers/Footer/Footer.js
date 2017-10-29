@@ -21,6 +21,5 @@ class Footer extends Component {
 }
 
 export default connect(state => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  user: state.user
+ ...state.user
 }))(Footer);

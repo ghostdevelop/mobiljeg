@@ -1,35 +1,54 @@
 #menu-header{
   background: #0095e5;
   border-bottom: 1px solid var(--alt-light-color);
-  padding: 20px 40px;
   text-align: center;
   color: white;
+}
+
+#menu-header .user-name{
+  padding: 20px;
+  border-bottom: 1px solid var(--alt-light-color);
+  background: var(--main-dark-color);
+  color: var(--main-color);
 }
 
 #menu-header .user-name span.fa{
   line-height: 21px;
   margin: 0 10px;
-  border: 1px solid white;
+  border: 1px solid var(--main-color);
   padding: 5px 10px;
   border-radius: 20px;
 }
 
-#menu-header .require-auth > button{
-  font-size: 13px;
-  margin-right: 5px;
-  padding: 5px;;
-  background: transparent;
-  border: 1px solid var(--alt-color);
-  color: var(--main-inv-color);
+#menu-header .require-auth .actions,
+#menu-header .authenticated .actions{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
 }
 
-#menu-header .require-auth > button:hover{
-  color: var(--main-color);
+#menu-header .require-auth .actions button,
+#menu-header .authenticated .actions button{
+  background: none;
+  border: none;
+  font-size: 12px;
+  padding: 10px 0;
+  flex: 1;
+}
+
+#menu-header .require-auth .actions button:nth-child(odd),
+#menu-header .authenticated .actions button:nth-child(odd){
+  border-right: 1px solid var(--alt-light-color);
+}
+
+#menu-header .require-auth .actions button:hover,
+#menu-header .authenticated .actions button:hover{
   background: var(--main-inv-color);
-  cursor: pointer;
+  color: var(--main-color)
 }
 
-#menu-header .require-auth > button .fa{
+#menu-header .require-auth .actions button .fa,
+#menu-header .authenticated .actions button .fa{
   margin-right: 5px;
 }
 
@@ -86,6 +105,11 @@
   text-decoration: none ;
   letter-spacing: 2px;
   color: white;
+  -webkit-transition: all var(--transistion-time) var(--transistion-type);
+  -moz-transition: all var(--transistion-time) var(--transistion-type);
+  -o-transition: all var(--transistion-time) var(--transistion-type);
+  transition: all var(--transistion-time) var(--transistion-type);
+  border-bottom: 1px solid var(--alt-light-color);
 }
 
 .bm-item-list a:hover{

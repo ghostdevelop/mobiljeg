@@ -11,7 +11,7 @@ class TicketList extends Component {
   }
 
   render() {
-    console.log("props", this.props)
+
     let tickets = this.props.tickets && this.props.tickets.length > 0 ? this.props.tickets.map((item, key) => {
       return(
         <tr key={key}>
@@ -19,8 +19,9 @@ class TicketList extends Component {
           <td>{item.name}</td>
           <td>{item.email}</td>
           <td>{item.phone}</td>
-          <td>{item.qty}</td>
+          <td>{item.qty} db</td>
           <td>{item.summary} HUF</td>
+          <td></td>
         </tr>
       );
     }) : []
@@ -47,9 +48,12 @@ class TicketList extends Component {
                   <th>Telefon</th>
                   <th>Mennyiség</th>
                   <th>Összeg</th>
+                  <th>Műveletek</th>
                 </tr>
               </thead>
-              {tickets.length > 0 ? tickets : <tr><td colspan="6">Nincsenek jegyek</td></tr>}
+              <tbody>
+              {tickets.length > 0 ? tickets : <tr><td colSpan="7">Nincsenek jegyek</td></tr>}
+              </tbody>
             </table>
           </div>
 

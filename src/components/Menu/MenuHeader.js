@@ -10,7 +10,7 @@ class Navigation extends Component {
   }
 
   onChangeLocation(e){
-    this.props.history.push("/login")
+    this.props.history.push(e.target.getAttribute("to"))
   }
 
   render() {
@@ -18,13 +18,21 @@ class Navigation extends Component {
       <div id="menu-header">
         {this.props.isAuthenticated
         ?
-          <div className="user-name">
-            <FontAwesome name='user' /><b>Kovács Elemér</b>
+          <div className="authenticated">
+            <div className="user-name">
+              <FontAwesome name='user' /><b>{this.props.user.email}</b>
+            </div>
+            <div className="actions">
+              <button to="/profil" onClick={this.onChangeLocation}><FontAwesome name='user' />Profil</button>
+              <button onClick={this.props.logout}><FontAwesome name='sign-out' />Kijelentkezés</button>
+            </div>
           </div>
         :
           <div className="require-auth">
-            <button to="/login" onClick={this.onChangeLocation}><FontAwesome name='user' />Bejelentkezés</button>
-            <button to="/login"><FontAwesome name='user' />Regisztráció</button>
+            <div className="actions">
+              <button to="/login" onClick={this.onChangeLocation}><FontAwesome name='user' />Bejelentkezés</button>
+              <button to="/login" onClick={this.onChangeLocation}><FontAwesome name='user' />Regisztráció</button>
+            </div>
           </div>
         }
       </div>

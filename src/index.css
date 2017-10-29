@@ -24,7 +24,9 @@ body {
   --link-color: #0095e5;
   --link-hover-color: #666;
   --valid-color: rgb(0, 208, 0);
-  --invalid-color: rgb(208, 87, 95)
+  --invalid-color: rgb(208, 87, 95);
+  --transistion-time: .2s;
+  --transistion-type: ease-in
 }
 
 /*********** INPUTS *************/
@@ -34,13 +36,20 @@ input{
   margin: 10px 0;
 }
 
+button{
+  -webkit-transition: all var(--transistion-time) var(--transistion-type);
+  -moz-transition: all var(--transistion-time) var(--transistion-type);
+  -o-transition: all var(--transistion-time) var(--transistion-type);
+  transition: all var(--transistion-time) var(--transistion-type);
+}
+
 .btn{
   -webkit-appearance: button;
   padding: 15px 20px;
   text-transform: uppercase ;
   letter-spacing: 1px;
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: all var(--transistion-time) var(--transistion-type);
+  transition: all var(--transistion-time) var(--transistion-type);
   border: 1px solid var(--main-color);
   background: var(--main-color);
   color:var(--main-inv-color);
