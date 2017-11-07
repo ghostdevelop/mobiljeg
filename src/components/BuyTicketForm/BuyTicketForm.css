@@ -34,3 +34,9 @@
   font-weight: bold;
   font-size: 48px;
 }
+
+@media screen and (max-width: 480px) {
+  #buy-ticket-form{
+      padding: 20px
+    }
+}

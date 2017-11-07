@@ -7,3 +7,9 @@
 #logo span{
   color: #fff;
 }
+
+@media screen and (max-width: 480px) {
+    #logo{
+      font-size: 32px;
+    }
+}

@@ -10,7 +10,7 @@ class LoginRoute extends Component {
       return this.props.isAuthenticated
         ?
           <Redirect to={{
-            pathname: this.props.location && this.props.location.state? this.props.location.state.from : "/",
+            pathname: this.props.location && this.props.location.state ? this.props.location.state.from : "/",
             state: { from: "/login"}
           }} />
         :

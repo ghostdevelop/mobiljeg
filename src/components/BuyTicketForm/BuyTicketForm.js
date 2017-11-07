@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { connect } from "react-redux";
 
+import { barionPay } from '../../actions/ticketActions';
 import { validate, changeInput, submit, renewSession } from '../../actions/forms/buyTicketFormActions';
 
 import BuyTicketFormSuccess from '../BuyTicketFormSuccess/BuyTicketFormSuccess';
@@ -35,7 +36,7 @@ class BuyTicketForm extends Component {
     if (this.props.success){
       return(
             <BuyTicketFormSuccess {...this.props}/>
-      );  
+      );
     } else {
       return(
         <div id="buy-ticket-form" className="shadow-6">
@@ -50,6 +51,7 @@ class BuyTicketForm extends Component {
               <span className="amount">{this.props.inputs.summary} Ft</span>
             </div>
             <input type="submit" className="btn btn-inv btn-fullwidth" value="Vásárlás" disabled={!this.props.validated} onClick={this.props.onSubmitForm}/>
+            <button onClick={this.props.barionPay}>Barion Pay</button>
           </form>
         </div>
       );
@@ -69,7 +71,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(submit());
   },
   onRenewSession: e => {
-    dispatch(renewSession(e.target, validation));
+    dispatch(renewSession());
+  },
+  barionPay: e => {
+    e.preventDefault();
+    dispatch(barionPay());
   },
 });
 

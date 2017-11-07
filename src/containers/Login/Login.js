@@ -9,11 +9,15 @@ class Login extends Component {
 
   render() {
     return (
-      <div id="login">
+      <div id="login" className="section">
 
-        <div className="section-content">
-          <LoginForm />
-          <RegistrationForm />
+        <div className="container">
+
+          <div className="login-forms">
+            <LoginForm />
+            <RegistrationForm />
+          </div>
+
         </div>
 
       </div>

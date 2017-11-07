@@ -13,13 +13,13 @@ class BuyTicket extends Component {
 
         <div className="container">
 
-          <div className="row block-title-holder">
+          <div className="block-title-holder">
             <div className="col-md-12">
               <h1 className="block-title">Jegyvásárlás</h1>
             </div>
           </div>
 
-          <div className="row buy-tickets">
+          <div className="buy-tickets">
               <BuyTicketForm />
               <BuyTicketInformations />
           </div>
