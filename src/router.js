@@ -10,6 +10,7 @@ import Header from "./containers/Header/Header";
 import Footer from "./containers/Footer/Footer";
 import Home from "./containers/Home/Home";
 import Profil from "./containers/Profil/Profil";
+import Checkout from "./containers/Checkout/Checkout";
 import BuyTicket from "./containers/BuyTicket/BuyTicket";
 import TicketList from "./containers/TicketList/TicketList";
 
@@ -29,8 +30,9 @@ class Router extends Component {
           <Switch>
             <Route exact path="/" render={(props) => (<Home {...props}/>)}/>
             <Route exact path="/jegyvasarlas" render={(props) => (<BuyTicket {...props}/>)}/>
-            <PrivateRoute  path="/jegyek" render={(props) => (<TicketList {...props}/>)}/>
+            <PrivateRoute  path="/jegyek" requiredRole="admin" render={(props) => (<TicketList {...props}/>)}/>
             <PrivateRoute  path="/profil" render={(props) => (<Profil {...props}/>)}/>
+            <PrivateRoute  path="/rendeles" render={(props) => (<Checkout {...props}/>)}/>
             <LoginRoute />
             <Redirect to="/" />
           </Switch>

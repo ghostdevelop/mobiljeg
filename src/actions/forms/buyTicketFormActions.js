@@ -1,6 +1,6 @@
-import axios from "axios";
-import { REMOTE_URL } from '../../config/app';
-
+// import { REMOTE_URL } from '../../config/app';
+import { barionPay } from "../ticketActions";
+import request from "../../utils/request";
 import validateInput from '../../utils/validateInput';
 import { isEmptyObject } from '../../utils/validations';
 
@@ -17,6 +17,15 @@ export function changeInput(e, validation){
         dispatch({type: actionPrefix + "INPUT_CHANGE", payload: {name: "summary", value: validatedInput.value * 700}})
 
       dispatch(validate(validation, e.name))
+  }
+}
+
+export function updateFromUser(e){
+  return function(dispatch, getState){
+      let user = getState().user.user;
+
+      dispatch({type: actionPrefix + "INPUT_CHANGE", payload: {name: "name", value: user.name || ""}})
+      dispatch({type: actionPrefix + "INPUT_CHANGE", payload: {name: "email", value: user.email || ""}})
   }
 }
 
@@ -49,13 +58,7 @@ export function submit(validation){
 
     if (validated){
       dispatch({type: actionPrefix + "SUBMISSION_STARTED"})
-      axios.post(REMOTE_URL + "/data/ticket/new-ticket", getState()[formID].inputs)
-        .then((response) => {
-          dispatch({type: actionPrefix + "SUBMISSION_SUCCESS", payload: response.data})
-        })
-        .catch((err) => {
-          dispatch({type: actionPrefix + "SUBMISSION_FAILED", payload: err})
-      })
+      dispatch(barionPay())
     }
   }
 }

@@ -29,7 +29,12 @@ class Menu extends Component {
         <MenuHeader {...this.props} handleMenuClick={this.handleMenuClick}/>
         <Link to="/" onClick={this.handleMenuClick} id="home" >Kezdőlap</Link>
         <Link to="/jegyvasarlas" onClick={this.handleMenuClick} id="buy-ticket" >Jegyvásárlás</Link>
-        <Link to="/jegyek" onClick={this.handleMenuClick} id="ticket-list" >Jegyek</Link>
+        {this.props.isAuthenticated && this.props.role === "admin"
+          ?
+            <Link to="/jegyek" onClick={this.handleMenuClick} id="ticket-list" >Jegyek</Link>
+          :
+            ""
+        }
       </BurgerMenu>
     );
 

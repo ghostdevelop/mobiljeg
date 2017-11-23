@@ -17,6 +17,17 @@ export default function reducer(state = initialState, action) {
       });
     }
 
+    case "USE_TICKET_SUCCESS": {
+      let tickets = state.tickets.filter((data, key) => data._id !== action.payload._id)
+      tickets.push(action.payload)
+
+      return update(state, {
+        tickets: {$set: tickets},
+        success: {$set: true},
+        loading: {$set: false}
+      });
+    }
+
     default: {
       return {...state}
     }

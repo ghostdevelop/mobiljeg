@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
 import FontAwesome from 'react-fontawesome';
 
 import './Home.css';
@@ -7,7 +6,6 @@ import './Home.css';
 class Home extends Component {
 
   render() {
-    console.log(this.state)
     return (
       <div id="dashboard" className="section">
         <div id="home-welcome">
@@ -56,6 +54,4 @@ class Home extends Component {
   }
 }
 
-export default connect(state => ({
-  asd: "asd"
-}))(Home);
+export default Home;

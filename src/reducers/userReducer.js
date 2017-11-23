@@ -3,6 +3,7 @@ import update from 'immutability-helper';
 const initialState = {
   user: {},
   isAuthenticated: false,
+  role: false,
   error: []
 };
 
@@ -12,6 +13,7 @@ export default function reducer(state = initialState, action) {
     case "LOGIN_SUCCESS": {
       return update(state, {
         isAuthenticated: {$set:true},
+        role: {$set:action.payload.role},
         user: {$set: action.payload}
       });
     }
@@ -19,7 +21,7 @@ export default function reducer(state = initialState, action) {
     case "LOGIN_FAILED": {
       return update(state, {
         isAuthenticated: {$set: false},
-        error: {$set: action.payload.error}    
+        error: {$set: action.payload.error}
       });
     }
 
@@ -52,7 +54,8 @@ export default function reducer(state = initialState, action) {
 
     case "AUTHENTICATE_SUCCESS": {
       return update(state, {
-        isAuthenticated: {$set:true},
+        isAuthenticated: {$set: true},
+        role: {$set: action.payload.role},
         user: {$set: action.payload}
       });
     }

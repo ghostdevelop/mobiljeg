@@ -5,7 +5,7 @@ export function authenticate(){
   return function(dispatch, getState){
     request.get(REMOTE_URL + "/data/auth/authenticate")
       .then((response) => {
-        dispatch({type: "AUTHENTICATE_SUCCESS", payload: response.data})
+        dispatch({type: "AUTHENTICATE_SUCCESS", payload: response.data})      
       })
       .catch((err) => {
         dispatch({type: "AUTHENTICATE_FAILED", payload: err})
