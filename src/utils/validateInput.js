@@ -32,8 +32,6 @@ export default function validateInput(value, validation, active = false, inputs 
       if (validation.equals && !isEmptyObject(inputs)){
         if (inputs[validation.equals] !== value){
           error += "Nem egyezik meg a következő mezővel: " + validation.equals
-          console.log("asd")
-
         }
       }
     }

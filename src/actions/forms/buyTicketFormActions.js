@@ -1,6 +1,5 @@
 // import { REMOTE_URL } from '../../config/app';
 import { barionPay } from "../ticketActions";
-import request from "../../utils/request";
 import validateInput from '../../utils/validateInput';
 import { isEmptyObject } from '../../utils/validations';
 

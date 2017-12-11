@@ -3,8 +3,33 @@ import { connect } from "react-redux";
 
 import { checkStatus } from '../../actions/ticketActions';
 
+import PaymentSuccess from '../../components/PaymentSuccess/PaymentSuccess';
+
 
 class Checkout extends Component {
+  constructor(props){
+    super(props)
+
+
+    this.renewSession = this.renewSession.bind(this);
+    this.printTicker = this.printTicker.bind(this);
+  }
+
+  componentWillMount(){
+    const search = this.props.location.search;
+    const params = new URLSearchParams(search);
+    const paymentId = params.get('paymentId');
+
+    this.props.checkStatus(paymentId);
+  }
+
+  printTicker(){
+    window.print();
+  }
+
+  renewSession(){
+    this.props.history.push("/")
+  }
 
   render() {
     return (
@@ -14,7 +39,8 @@ class Checkout extends Component {
 
             <div className="block-title-holder">
               <div className="col-md-12">
-                <h1 className="block-title">Profil</h1>
+                <h1 className="block-title">Rendelés összesítő</h1>
+                <PaymentSuccess payment={this.props.payment} ticket={this.props.ticket} renewSession={this.renewSession} printTicker={this.printTicker}/>
               </div>
             </div>
 
@@ -25,11 +51,11 @@ class Checkout extends Component {
   }
 }
 
-const mapStateToProps = state => ({ ...state.order });
+const mapStateToProps = state => ({ ...state.payment });
 
 const mapDispatchToProps = dispatch => ({
-  checkStatus: () => {
-
+  checkStatus: (paymentId) => {
+    dispatch(checkStatus(paymentId))
   }
 });
 

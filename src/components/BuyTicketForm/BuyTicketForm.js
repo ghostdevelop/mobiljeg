@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { connect } from "react-redux";
 
-import { validate, changeInput, submit, renewSession, updateFromUser } from '../../actions/forms/buyTicketFormActions';
+import { validate, changeInput, submit, updateFromUser } from '../../actions/forms/buyTicketFormActions';
 
 import LabeledInput from '../LabeledInput/LabeledInput';
 
@@ -65,9 +65,6 @@ const mapDispatchToProps = dispatch => ({
     e.preventDefault();
     dispatch(validate(validation));
     dispatch(submit());
-  },
-  onRenewSession: e => {
-    dispatch(renewSession());
   }
 });
 

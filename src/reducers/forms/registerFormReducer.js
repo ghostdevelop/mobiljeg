@@ -45,7 +45,6 @@ export default function reducer(state = initialState, action) {
     }
 
     case actionPrefix + "SUBMISSION_SUCCESS": {
-      console.log("action.payload", action.payload)
       return update(state, {
         loading: {$set: false},
         success: {$set: true},
@@ -57,7 +56,7 @@ export default function reducer(state = initialState, action) {
       return update(state, {
         loading: {$set: false},
         failed: {$set: true},
-        error: {$set: action.payload.error}        
+        error: {$set: action.payload.error}
       });
     }
 

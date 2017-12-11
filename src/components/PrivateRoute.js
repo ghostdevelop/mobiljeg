@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 class PrivateRoute extends Component {
 
   render() {
-    console.log("props", this.props)
-      if (this.props.isAuthenticated && this.props.role === this.props.requiredRole || this.props.isAuthenticated && this.props.requiredRole === undefined){
+      if ((this.props.isAuthenticated && this.props.role === this.props.requiredRole) || (this.props.isAuthenticated && this.props.requiredRole === undefined)){
         return <Route exact path={this.props.path} render={this.props.render} />
       } else if(this.props.isAuthenticated && this.props.role !== this.props.requiredRole){
         return <Redirect to={{ pathname: "/", state: { from: this.props.path} }} />

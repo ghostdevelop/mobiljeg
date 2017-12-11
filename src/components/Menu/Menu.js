@@ -28,13 +28,8 @@ class Menu extends Component {
       <BurgerMenu pageWrapId={"wrapper-content"} outerContainerId={"header"} isOpen={ this.state.menuOpen }>
         <MenuHeader {...this.props} handleMenuClick={this.handleMenuClick}/>
         <Link to="/" onClick={this.handleMenuClick} id="home" >Kezdőlap</Link>
-        <Link to="/jegyvasarlas" onClick={this.handleMenuClick} id="buy-ticket" >Jegyvásárlás</Link>
-        {this.props.isAuthenticated && this.props.role === "admin"
-          ?
-            <Link to="/jegyek" onClick={this.handleMenuClick} id="ticket-list" >Jegyek</Link>
-          :
-            ""
-        }
+        {this.props.isAuthenticated && this.props.role === "admin" ? <Link to="/jegyek" onClick={this.handleMenuClick} id="ticket-list" >Jegyek</Link> : "" }
+        {this.props.isAuthenticated && this.props.role === "admin" ? <Link to="/beallitasok" onClick={this.handleMenuClick} id="options" >Beállítások</Link> : "" }
       </BurgerMenu>
     );
 

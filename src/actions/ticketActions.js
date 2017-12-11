@@ -4,7 +4,7 @@ import { REMOTE_URL } from '../config/app';
 export function getTickets(e){
   return function(dispatch, getState){
       dispatch({type: "FETCHING_TICKETS_STARTED"})
-      request.get(REMOTE_URL + "/data/ticket/")
+      request.get(REMOTE_URL + "/data/ticket/all")
         .then((response) => {
           dispatch({type: "FETCHING_TICKETS_SUCCESS", payload: response.data})
         })
@@ -16,7 +16,6 @@ export function getTickets(e){
 
 export function useTicket(data){
   return function(dispatch, getState){
-    console.log("data2", data)
       dispatch({type: "USE_TICKET_STARTED"})
       request.post(REMOTE_URL + "/data/ticket/use-ticket", {ticketID: data.selectedID, usedQty: data.changeQty})
         .then((response) => {
@@ -28,17 +27,30 @@ export function useTicket(data){
   }
 }
 
-export function checkStatus(e){
+export function checkTicketStatus(id){
   return function(dispatch, getState){
-    console.log("check status")
-      // dispatch({type: "FETCHING_TICKETS_STARTED"})
-      // request.get(REMOTE_URL + "/data/ticket/")
-      //   .then((response) => {
-      //     dispatch({type: "FETCHING_TICKETS_SUCCESS", payload: response.data})
-      //   })
-      //   .catch((err) => {
-      //     dispatch({type: "FETCHING_TICKETS_FAILED", payload: err.data})
-      // })
+      dispatch({type: "CHECK_TICKET_STATUS_STARTED"})
+      request.get(REMOTE_URL + "/data/ticket/ticket-status?ticketID=" + id)
+        .then((response) => {
+          dispatch({type: "CHECK_TICKET_STATUS_SUCCESS", payload: response.data})
+        })
+        .catch((err) => {
+          dispatch({type: "CHECK_TICKET_STATUS_FAILED", payload: err.data})
+      })
+  }
+}
+
+export function checkStatus(id){
+  return function(dispatch, getState){
+      dispatch({type: "CHECK_PAYMENT_STATUS_STARTED"})
+      request.get("https://api.test.barion.com/v2/Payment/GetPaymentState/?POSKEY=c7fac0dccb2748c6814584a61f18bd7d&PaymentId=" + id, {withCredentials: false})
+        .then((response) => {
+          dispatch({type: "CHECK_PAYMENT_STATUS_SUCCESS", payload: response.data})
+          dispatch(checkTicketStatus(response.data.PaymentRequestId))
+        })
+        .catch((err) => {
+          dispatch({type: "CHECK_PAYMENT_STATUS_FAILED", payload: err.data})
+      })
   }
 }
 
@@ -57,6 +69,7 @@ export function barionPay(e){
           "FundingSources": ["All"],
           "PaymentRequestId": response.data._id,
           "Locale": "hu-HU",
+          "OrderNumber": response.data._id,
           "Currency": "HUF",
           "Transactions": [{
               "POSTransactionId": response.data._id,
@@ -78,13 +91,11 @@ export function barionPay(e){
             window.location.replace(response.data.GatewayUrl)
           })
           .catch((err) => {
-            console.log(err)
             dispatch({type: "CREATE_NEW_TICKET_FAILED"})
         })
 
       })
       .catch((err) => {
-        console.log(err)
         dispatch({type: "CREATE_NEW_TICKET_FAILED"})
     })
   }
